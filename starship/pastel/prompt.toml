@@ -46,7 +46,8 @@ truncation_symbol = "…/"
 "Downloads" = " "
 "Music" = " "
 "Pictures" = " "
-"Projects" = " "
+"Projects" = "󱌢 "
+"~" = " "
 
 [cpp]
 symbol = " "
