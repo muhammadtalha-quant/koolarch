@@ -1,10 +1,10 @@
 function load_prompt #change shell prompt
     # load prompt from a special file
     set prompts catppuccin_frappe catppuccin_latte catppuccin_mocha gruvbox pastel
-    if not test -f "./.prompt"
+    if not test -f "/home/muhammadtalha/.config/fish/conf.d/.prompt"
         gen_prompt_config
     end
-    set prompt_found (cat "./.prompt" | awk '{ print $2 }')
+    set prompt_found (cat "/home/muhammadtalha/.config/fish/conf.d/.prompt" | awk '{ print $2 }')
     if test (string join $prompts) = (string join $prompt_found)
         return 1
     end
