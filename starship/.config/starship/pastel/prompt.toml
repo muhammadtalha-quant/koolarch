@@ -1,0 +1,87 @@
+"$schema" = "https://starship.rs/config-schema.json"
+
+format = """
+[](#9A348E)\
+$os\
+$username\
+[](bg:blush fg:plum)\
+$directory\
+[](fg:blush bg:salmon)\
+$git_branch\
+$git_status\
+[](fg:salmon bg:sky)\
+$cpp\
+[](fg:sky bg:coral_coast)\
+$docker_context\
+[](fg:coral_coast bg:teal_blue)\
+$time\
+[ ](fg:teal_blue)\
+"""
+
+palette = "pastel"
+
+[username]
+show_always = true
+style_user = "bg:plum"
+style_root = "bg:plum"
+format = "[$user ]($style)"
+disabled = false
+
+[os]
+style = "bg:plum"
+disabled = false
+
+[os.symbols]
+Arch = "󰣇 "
+
+[directory]
+style = "bg:blush"
+format = "[ $path ]($style)"
+truncation_length = 3
+truncation_symbol = "…/"
+
+[directory.substitutions]
+"Documents" = "󰈙 "
+"Downloads" = " "
+"Music" = " "
+"Pictures" = " "
+"Projects" = "󱌢 "
+"~" = " "
+
+[cpp]
+symbol = " "
+style = "bg:sky"
+format = "[ $symbol ($version) ]($style)"
+disabled = false
+
+[docker_context]
+symbol = " "
+style = "bg:coral_coast"
+format = "[ $symbol $context ]($style)"
+disabled = false
+
+[git_branch]
+symbol = ""
+style = "fg:plum bg:salmon"
+format = "[ $symbol $branch ]($style)"
+
+[git_status]
+style = "fg:plum bg:salmon"
+format = "[$all_status$ahead_behind ]($style)"
+
+[time]
+disabled = false
+time_format = "%R"
+style = "bg:teal_blue"
+format = "[  $time ]($style)"
+
+[palettes.pastel]
+white = "#FFFFFF"
+tan = "#CC3802"
+teal = "#047E84"
+plum = "#9A348E"
+blush = "#DA627D"
+salmon = "#FCA17D"
+sky = "#86BBD8"
+teal_blue = "#33658A"
+coral_coast = "#06969A"
