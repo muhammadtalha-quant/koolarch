@@ -235,10 +235,7 @@ for i = 1, 9 do
             workspace = tostring(i)
         })
     )
-end
-
-for i = 1, 9 do
-    hl.bind(
+     hl.bind(
         chord(
             KEYS.MODIFIER.SUPER,
             KEYS.MODIFIER.SHIFT,
@@ -248,9 +245,6 @@ for i = 1, 9 do
             workspace = tostring(i)
         })
     )
-end
-
-for i = 1, 9 do
     hl.bind(
         chord(
             KEYS.MODIFIER.SUPER,
