@@ -549,6 +549,7 @@
         "gufw",
         "lazygit",
         "libreoffice-fresh",
+	"stow",
         "pacman-contrib",
         "snap-pac",
         "snapper",
