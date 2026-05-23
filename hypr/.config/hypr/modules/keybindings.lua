@@ -136,7 +136,8 @@ local apps = {
     ["google-chrome-stable"] = chord(KEYS.MODIFIER.SUPER, KEYS.ALPHABET.B),
     code = chord(KEYS.MODIFIER.SUPER, KEYS.ALPHABET.C),
     dolphin = chord(KEYS.MODIFIER.SUPER, KEYS.ALPHABET.E),
-    localsend = chord(KEYS.MODIFIER.SUPER, KEYS.ALPHABET.L)
+    localsend = chord(KEYS.MODIFIER.SUPER, KEYS.ALPHABET.L),
+    gimp = chord(KEYS.MODIFIER.SUPER, KEYS.ALPHABET.G)
 }
 
 for command,keybind in pairs(apps) do 
