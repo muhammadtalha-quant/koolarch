@@ -528,6 +528,9 @@
     },
     "ntp": true,
     "packages": [
+        "man",
+        "less",
+        "more",
         "7zip",
         "base-devel",
         "btop",
@@ -549,7 +552,7 @@
         "gufw",
         "lazygit",
         "libreoffice-fresh",
-	"stow",
+	    "stow",
         "pacman-contrib",
         "snap-pac",
         "snapper",
