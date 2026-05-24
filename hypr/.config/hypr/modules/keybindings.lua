@@ -47,18 +47,6 @@ local  KEYS = {
         UP = "UP",
         DOWN = "DOWN",
     },
-    -- NUMBER = {
-    --     ONE = "1",
-    --     TWO = "2",
-    --     THREE = "3",
-    --     FOUR = "4",
-    --     FIVE = "5",
-    --     SIX = "6",
-    --     SEVEN = "7",
-    --     EIGHT = "8",
-    --     NINE = "9",
-    --     ZERO = "0",
-    -- },
     PUNCTUATION = {
         COMMA = "COMMA",
         PERIOD = "PERIOD",
@@ -134,18 +122,23 @@ local  KEYS = {
 
 
 local apps = {
-    [chord(KEYS.MODIFIER.SUPER, KEYS.SPECIAL.ENTER)] = "ghostty",
-    [chord(KEYS.MODIFIER.SUPER, KEYS.ALPHABET.B)] = "google-chrome-stable",
-    [chord(KEYS.MODIFIER.SUPER, KEYS.ALPHABET.C)] = "code",
-    [chord(KEYS.MODIFIER.SUPER, KEYS.ALPHABET.E)] = "dolphin",
-    [chord(KEYS.MODIFIER.SUPER, KEYS.ALPHABET.L)] = "localsend",
-    [chord(KEYS.MODIFIER.SUPER, KEYS.ALPHABET.G)] = "gimp"
+    [chord(KEYS.MODIFIER.SUPER, KEYS.SPECIAL.ENTER)] = {name = "ghostty",               description = "Open Ghostty Terminal"},
+    [chord(KEYS.MODIFIER.SUPER, KEYS.ALPHABET.B)] =    {name = "google-chrome-stable",  description = "Open Google Chrome Browser"},
+    [chord(KEYS.MODIFIER.SUPER, KEYS.ALPHABET.C)] =    {name = "code",                  description = "Open VSCode"},
+    [chord(KEYS.MODIFIER.SUPER, KEYS.ALPHABET.E)] =    {name = "dolphin",               description = "Open Dolphin File Manager"},
+    [chord(KEYS.MODIFIER.SUPER, KEYS.ALPHABET.L)] =    {name = "localsend",             description = "Open Localsend"},
+    [chord(KEYS.MODIFIER.SUPER, KEYS.ALPHABET.G)] =    {name = "gimp",                  description = "Open GIMP"},
 }
 
 for keybind,app in pairs(apps) do 
      hl.bind(
         keybind,
-        hl.dsp.exec_cmd(app)
+        hl.dsp.exec_cmd(app.name),
+        {
+            description = app.description,
+            submap_universal = true,
+            submap = "Apps"
+        }
      )
 end
 
@@ -157,32 +150,32 @@ end
 local ipc = "qs -c noctalia-shell "
 
 local calls = {
-    [chord(KEYS.MODIFIER.SUPER, KEYS.SPECIAL.SPACE)] = "ipc call launcher toggle",
-    [chord(KEYS.MODIFIER.SUPER, KEYS.MODIFIER.ALT, KEYS.SPECIAL.SPACE)] = "ipc call controlCenter toggle",
-    [chord(KEYS.MODIFIER.SUPER, KEYS.PUNCTUATION.PERIOD)] = "ipc call settings toggle",
-    [chord(KEYS.MODIFIER.ALT, KEYS.ALPHABET.V)] = "ipc call launcher clipboard",
-    [chord(KEYS.MODIFIER.ALT, KEYS.ALPHABET.N)] = "ipc call notifications toggleHistory",
-    [chord(KEYS.MODIFIER.CTRL, KEYS.MODIFIER.ALT, KEYS.ALPHABET.N)] = "ipc call notifications clear",
-    [chord(KEYS.MODIFIER.SUPER, KEYS.MODIFIER.CTRL, KEYS.ALPHABET.N)] = "ipc call notifications toggleDND",
-    [chord(KEYS.MODIFIER.ALT, KEYS.ALPHABET.B)] = "ipc call bar toggle",
-    [chord(KEYS.MODIFIER.SUPER, KEYS.MODIFIER.SHIFT, KEYS.ALPHABET.T)] = "ipc call darkMode toggle",
-    [chord(KEYS.MODIFIER.SUPER, KEYS.PUNCTUATION.COMMA)] = "ipc call launcher emoji",
-    [chord(KEYS.MODIFIER.SUPER, KEYS.MODIFIER.CTRL, KEYS.ALPHABET.C)] = "ipc call calendar toggle",
-    [KEYS.XF86.AUDIORAISEVOLUME] = "ipc call volume increase",
-    [KEYS.XF86.AUDIOLOWERVOLUME] = "ipc call volume decrease",
-    [KEYS.XF86.AUDIOMUTE] = "ipc call volume muteOutput",
-    [KEYS.XF86.CALCULATOR] = "ipc call volume togglePanel",
-    [KEYS.XF86.AUDIOPLAY] = "ipc call media playPause",
-    [chord(KEYS.MODIFIER.ALT, KEYS.SPECIAL.ESCAPE)] = "ipc call systemMonitor toggle",
-    [chord(KEYS.MODIFIER.CTRL, KEYS.MODIFIER.ALT, KEYS.NAVIGATION.DELETE)] = "ipc call sessionMenu toggle",
-    [chord(KEYS.MODIFIER.SUPER, KEYS.MODIFIER.ALT, KEYS.ALPHABET.L)] = "ipc call lockScreen lock",
-    [chord(KEYS.MODIFIER.SUPER, KEYS.MODIFIER.SHIFT, KEYS.ALPHABET.W)] = "ipc call wallpaper random",
+    [chord(KEYS.MODIFIER.SUPER, KEYS.SPECIAL.SPACE)] =                       {name = "ipc call launcher toggle",                                description = "Toggle Launcher"},
+    [chord(KEYS.MODIFIER.SUPER, KEYS.MODIFIER.ALT, KEYS.SPECIAL.SPACE)] =    {name = "ipc call controlCenter toggle",                           description = "Toogle Sidebar"},                 
+    [chord(KEYS.MODIFIER.SUPER, KEYS.PUNCTUATION.PERIOD)] =                  {name = "ipc call settings toggle",                                description = "Toggle Settings"},             
+    [chord(KEYS.MODIFIER.ALT, KEYS.ALPHABET.V)] =                            {name = "ipc call launcher clipboard",                             description = "Toggle Clipboard History"},             
+    [chord(KEYS.MODIFIER.ALT, KEYS.ALPHABET.N)] =                            {name = "ipc call notifications toggleHistory",                    description = "Toggle Notifications"},                         
+    [chord(KEYS.MODIFIER.ALT, KEYS.ALPHABET.B)] =                            {name = "ipc call bar toggle",                                     description = "Toggle Bar"},     
+    [chord(KEYS.MODIFIER.SUPER, KEYS.MODIFIER.SHIFT, KEYS.ALPHABET.T)] =     {name = "ipc call darkMode toggle",                                description = "Cycle Dark/Light Theme"},             
+    [chord(KEYS.MODIFIER.SUPER, KEYS.PUNCTUATION.COMMA)] =                   {name = "ipc call launcher emoji",                                 description = "Toggle Emoji Selector"},         
+    [chord(KEYS.MODIFIER.ALT, KEYS.ALPHABET.C)] =                            {name = "ipc call calendar toggle",                                description = "Toggle Calendar"},             
+    [KEYS.XF86.AUDIORAISEVOLUME] =                                           {name = "ipc call volume increase",                                description = "Increase Volume"},
+    [KEYS.XF86.AUDIOLOWERVOLUME] =                                           {name = "ipc call volume decrease",                                description = "Decrease Volume"},
+    [KEYS.XF86.AUDIOMUTE] =                                                  {name = "ipc call volume muteOutput",                              description = "Toggle Mute"},
+    [chord(KEYS.MODIFIER.ALT, KEYS.SPECIAL.ESCAPE)] =                        {name = "ipc call systemMonitor toggle",                           description = "Toggle Resource Monitor"},
+    [chord(KEYS.MODIFIER.CTRL, KEYS.MODIFIER.ALT, KEYS.NAVIGATION.DELETE)] = {name = "ipc call sessionMenu toggle",                             description = "Toggle Session Menu"},
+    [chord(KEYS.MODIFIER.SUPER, KEYS.MODIFIER.ALT, KEYS.ALPHABET.L)] =       {name = "ipc call lockScreen lock",                                description = "Lock Session"},
+    [chord(KEYS.MODIFIER.SUPER, KEYS.MODIFIER.SHIFT, KEYS.ALPHABET.W)] =     {name = "ipc call wallpaper random",                               description = "Change Wallpaper"},
+    [chord(KEYS.MODIFIER.SUPER, KEYS.FUNCTION.F1)] =                         {name = "ipc call plugin:keybind-cheatsheet toggle",               description = "Toggle Keybinds"},                           
 }
 
 for keybind,call in pairs(calls) do 
     hl.bind(
         keybind,
-        hl.dsp.exec_cmd(ipc .. call)
+        hl.dsp.exec_cmd(ipc .. call.name),
+        {
+            description = call.description
+        }
     )
 end
 
@@ -193,92 +186,122 @@ end
 -------------------------------------------------------------
 
 
-hl.bind( -- close single window
+hl.bind(
     chord(
         KEYS.MODIFIER.SUPER,
         KEYS.ALPHABET.Q
     ),
-    hl.dsp.window.close()
+    hl.dsp.window.close(),
+    {
+        description = "Gracefully Close Window"
+    }
 )
 
-hl.bind( -- close all instances of a window
+hl.bind(
     chord(
         KEYS.MODIFIER.SUPER,
         KEYS.MODIFIER.SHIFT,
         KEYS.ALPHABET.Q
     ),
-    hl.dsp.window.kill()
+    hl.dsp.window.kill(),
+    {
+        description = "Forcefully Close Window"
+    }
 )
 
-hl.bind( -- toggle float / tile
+hl.bind(
     chord(
         KEYS.MODIFIER.SUPER,
         KEYS.ALPHABET.F
     ),
-    hl.dsp.window.float()
+    hl.dsp.window.float(),
+    {
+        description = "Toggle Float/Tile"
+    }
 )
 
-hl.bind( -- focus left
+hl.bind(
     chord(
         KEYS.MODIFIER.SUPER,
         KEYS.ARROW.LEFT
     ),
     hl.dsp.focus({
         direction = "left"
-    })
+    }),
+    {
+        description = "Focus Window Left"
+    }
 )
 
-hl.bind( -- focus right
+hl.bind(
     chord(
         KEYS.MODIFIER.SUPER,
         KEYS.ARROW.RIGHT
     ),
     hl.dsp.focus({
         direction = "right"
-    })
+    }),
+    {
+        description = "Focus Window Right"
+    }
 )
-hl.bind( -- focus up
+hl.bind(
     chord(
         KEYS.MODIFIER.SUPER,
         KEYS.ARROW.UP
     ),
     hl.dsp.focus({
         direction = "up"
-    })
+    }),
+    {
+        description = "Focus Window Up"
+    }
 )
 
-hl.bind( -- focus down
+hl.bind(
     chord(
         KEYS.MODIFIER.SUPER,
         KEYS.ARROW.DOWN
     ),
     hl.dsp.focus({
         direction = "down"
-    })
+    }),
+    {
+        description = "Focus Window Down"
+    }
 )
 
-hl.bind( -- toggle fullscreen
+hl.bind(
     KEYS.FUNCTION.F11,
-    hl.dsp.window.fullscreen()
+    hl.dsp.window.fullscreen(),
+    {
+        description = "Toggle Fullscreen"
+    }
 )
 
-hl.bind( -- drag window
+hl.bind(
     chord(
         KEYS.MODIFIER.SUPER,
         KEYS.MOUSE.LMB
     ),
-    hl.dsp.window.drag()
+    hl.dsp.window.drag(),
+    {
+        description = "Drag Window"
+    }
 )
 
-hl.bind( -- resize window
+hl.bind(
     chord(
         KEYS.MODIFIER.SUPER,
         KEYS.MOUSE.RMB
     ),
-    hl.dsp.window.resize()
+    hl.dsp.window.resize(),
+    {
+        description = "Resize Window"
+    }
 )
 
-hl.bind( -- swap focused window with window to the left 
+hl.bind(
     chord(
         KEYS.MODIFIER.SUPER,
         KEYS.MODIFIER.SHIFT,
@@ -286,10 +309,13 @@ hl.bind( -- swap focused window with window to the left
     ),
     hl.dsp.window.swap({
         direction = "left"
-    })
+    }),
+    {
+        description = "Swap Focused Window with Window to Left"
+    }
 )
 
-hl.bind( -- swap focused window with window to the right
+hl.bind(
     chord(
         KEYS.MODIFIER.SUPER,
         KEYS.MODIFIER.SHIFT,
@@ -297,10 +323,13 @@ hl.bind( -- swap focused window with window to the right
     ),
     hl.dsp.window.swap({
         direction = "right"
-    })
+    }),
+    {
+        description = "Swap Focused Window with Window to Right"
+    }
 )
 
-hl.bind( -- swap focused window with window above
+hl.bind(
     chord(
         KEYS.MODIFIER.SUPER,
         KEYS.MODIFIER.SHIFT,
@@ -308,10 +337,13 @@ hl.bind( -- swap focused window with window above
     ),
     hl.dsp.window.swap({
         direction = "up"
-    })
+    }),
+    {
+        description = "Swap Focused Window with Window Above"
+    }
 )
 
-hl.bind( -- swap focused window with window below
+hl.bind(
     chord(
         KEYS.MODIFIER.SUPER,
         KEYS.MODIFIER.SHIFT,
@@ -319,7 +351,10 @@ hl.bind( -- swap focused window with window below
     ),
     hl.dsp.window.swap({
         direction = "down"
-    })
+    }),
+    {
+        description = "Swap Focused Window with Window Below"
+    }
 )
 
 -------------------------------------------------------------
@@ -335,7 +370,10 @@ local function SwitchToWorkspace(WorkspaceID)
         ),
         hl.dsp.focus({
             workspace = tostring(WorkspaceID)
-        })
+        }), 
+        {
+            description = "Switch To Workspace # " .. tostring(WorkspaceID)
+        }
     )
 end
 
@@ -348,7 +386,10 @@ local function MoveWindowToWorkspace(WorkspaceID)
             ),
         hl.dsp.window.move({
             workspace = tostring(WorkspaceID)
-        })
+        }), 
+        {
+            description = "Move Window To Workspace # " .. tostring(WorkspaceID)
+        }
     )
 end
 
@@ -362,13 +403,22 @@ local function MoveWindowToWorkspaceSilently(WorkspaceID)
         hl.dsp.window.move({
             workspace = tostring(WorkspaceID),
             follow = false,
-        })
+        }), 
+        {
+            description = "Move Window (Silent) To Workspace # " .. tostring(WorkspaceID) 
+        }
     )
 end
 
 for i = 1, 9 do
     SwitchToWorkspace(i)
+end
+
+for i = 1, 9 do
     MoveWindowToWorkspace(i)
+end
+
+for i = 1, 9 do
     MoveWindowToWorkspaceSilently(i)
 end
 
@@ -380,7 +430,10 @@ hl.bind(
     ),
     hl.dsp.focus({
         workspace = "+1"
-    })
+    }), 
+    {
+        description = "Switch to workspace right"
+    }
 )
 
 hl.bind(
@@ -391,5 +444,8 @@ hl.bind(
     ),
     hl.dsp.focus({
         workspace = "-1"
-    })
+    }), 
+    {
+        description = "Switch to workspace left"
+    }
 )
