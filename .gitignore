@@ -1,1 +1,4 @@
 fish/.config/fish/fish_variables
+noctalia/.config/noctalia/plugins/**/*
+!noctalia/.config/noctalia/plugins/**/*.json
+
