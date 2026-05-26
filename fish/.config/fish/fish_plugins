@@ -1,1 +1,4 @@
-ilancosman/tide@v6
+ilancosman/tide@v6 # for p10k level prompt as zsh
+franciscolourenco/done # for pushing notifications after completion of time consuming cmd   
+patrickf1/fzf.fish # for fzf integration in fish 
+jorgebucaran/autopair.fish # for autopairing quick cmds in fish
