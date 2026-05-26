@@ -1,2 +1,4 @@
 fish/.config/fish/fish_variables
+fish/.config/fish/functions
+fish/.config/fish/completions
 noctalia/.config/noctalia/plugins
