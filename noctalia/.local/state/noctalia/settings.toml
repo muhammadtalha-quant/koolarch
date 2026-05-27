@@ -1,0 +1,119 @@
+[bar]
+order = [ "top-bar" ]
+
+    [bar.top-bar]
+    background_opacity = 0.42999999038875103
+    capsule = true
+    center = [ "clock", "date", "weather" ]
+    end = [ "network", "bluetooth", "volume", "brightness", "battery" ]
+    font_weight = 400
+    margin_edge = 8.0
+    margin_ends = 19.0
+    padding = 15
+    start = [ "workspaces", "active_window" ]
+    thickness = 39
+    widget_spacing = 7
+
+[desktop_widgets]
+enabled = false
+schema_version = 1
+widget_order = []
+
+    [desktop_widgets.grid]
+    cell_size = 16
+    major_interval = 4
+    visible = true
+
+    [desktop_widgets.widget]
+
+[keybinds]
+cancel = [ "Escape" ]
+validate = [ "Return", "KP_Enter" ]
+
+[shell]
+avatar_path = "/home/muhammadtalha/.face/gibli.png"
+clipboard_history_max_entries = 20.0
+corner_radius_scale = 1.3500000201165676
+font_family = "JetBrainsMono Nerd Font Mono"
+polkit_agent = true
+telemetry_enabled = true
+
+    [shell.animation]
+    speed = 0.65000000968575478
+
+    [shell.panel]
+    clipboard_placement = "attached"
+    launcher_categories = false
+    launcher_placement = "attached"
+    open_near_click_control_center = true
+    transparency_mode = "glass"
+
+    [[shell.session.actions]]
+    action = "logout"
+    enabled = true
+    shortcut = "2"
+    variant = "default"
+
+    [[shell.session.actions]]
+    action = "suspend"
+    enabled = true
+    shortcut = "3"
+    variant = "default"
+
+    [[shell.session.actions]]
+    action = "reboot"
+    enabled = true
+    shortcut = "4"
+    variant = "default"
+
+    [[shell.session.actions]]
+    action = "shutdown"
+    enabled = true
+    shortcut = "5"
+    variant = "destructive"
+
+    [shell.shadow]
+    blur = 18
+
+[theme]
+builtin = "Gruvbox"
+
+    [theme.templates]
+    builtin_ids = [ "gtk3", "gtk4", "ghostty", "hyprland", "qt" ]
+    enable_community_templates = false
+
+[wallpaper]
+directory = "/home/muhammadtalha/Pictures"
+fill_mode = "stretch"
+
+    [wallpaper.default]
+    path = "/home/muhammadtalha/Pictures/wallhaven-lyq3kq.jpg"
+
+    [wallpaper.last]
+    path = "/home/muhammadtalha/Pictures/wallhaven-lyq3kq.jpg"
+
+    [wallpaper.monitors.eDP-1]
+    path = "/home/muhammadtalha/Pictures/wallhaven-lyq3kq.jpg"
+
+[weather]
+address = "Mardan, Pakistan"
+
+[widget.active_window]
+title_scroll = "on_hover"
+
+[widget.bongocat]
+script = "scripts/bongocat.lua"
+type = "scripted"
+
+[widget.clock]
+format = "{:%-I:%M %p}"
+
+[widget.date]
+format = "{:%b %d, %Y}"
+
+[widget.gap]
+length = 22.0
+type = "spacer"
+
+[widget.media]
+capsule = true
