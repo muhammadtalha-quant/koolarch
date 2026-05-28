@@ -118,53 +118,66 @@ local  KEYS = {
 -- 1. Apps
 
 local apps = {
-    [chord(KEYS.MODIFIER.SUPER, KEYS.SPECIAL.ENTER)] = {name = "ghostty",               description = "Open Ghostty Terminal"},
-    [chord(KEYS.MODIFIER.SUPER, KEYS.ALPHABET.B)] =    {name = "google-chrome-stable",  description = "Open Google Chrome Browser"},
-    [chord(KEYS.MODIFIER.SUPER, KEYS.ALPHABET.C)] =    {name = "code",                  description = "Open VSCode"},
-    [chord(KEYS.MODIFIER.SUPER, KEYS.ALPHABET.E)] =    {name = "nautilus",              description = "Open Nautilus File Manager"},
-    [chord(KEYS.MODIFIER.SUPER, KEYS.ALPHABET.L)] =    {name = "localsend",             description = "Open Localsend"},
-    [chord(KEYS.MODIFIER.SUPER, KEYS.ALPHABET.G)] =    {name = "gimp",                  description = "Open GIMP"},
+    [chord(KEYS.MODIFIER.SUPER, KEYS.SPECIAL.ENTER)] = {cmd = "kitty",               desc = "Open Kitty Terminal"},
+    [chord(KEYS.MODIFIER.SUPER, KEYS.ALPHABET.B)] =    {cmd = "google-chrome-stable",  desc = "Open Google Chrome Browser"},
+    [chord(KEYS.MODIFIER.SUPER, KEYS.ALPHABET.C)] =    {cmd = "code",                  desc = "Open VSCode"},
+    [chord(KEYS.MODIFIER.SUPER, KEYS.ALPHABET.E)] =    {cmd = "nautilus",              desc = "Open Nautilus File Manager"},
+    [chord(KEYS.MODIFIER.SUPER, KEYS.ALPHABET.L)] =    {cmd = "localsend",             desc = "Open Localsend"},
+    [chord(KEYS.MODIFIER.SUPER, KEYS.ALPHABET.G)] =    {cmd = "gimp",                  desc = "Open GIMP"},
 }
 
 
 for keybind,app in pairs(apps) do 
      hl.bind(
         keybind,
-        hl.dsp.exec_cmd(app.name),
+        hl.dsp.exec_cmd(app.cmd),
         {
-            description = app.description,
+            description = app.desc,
         }
      )
 end
 
--- 2. IPC Calls
+-- 2. Utilities
 
-local calls = {
-    [chord(KEYS.MODIFIER.SUPER, KEYS.SPECIAL.SPACE)] =                       {command = "noctalia msg panel-toggle launcher",                                description = "Toggle Launcher"},
-    [chord(KEYS.MODIFIER.SUPER, KEYS.MODIFIER.ALT, KEYS.SPECIAL.SPACE)] =    {command = "noctalia msg panel-toggle control-center",                          description = "Toogle Sidebar"},                 
-    [chord(KEYS.MODIFIER.SUPER, KEYS.PUNCTUATION.PERIOD)] =                  {command = "noctalia msg settings-toggle",                                      description = "Toggle Settings"},             
-    [chord(KEYS.MODIFIER.ALT, KEYS.ALPHABET.V)] =                            {command = "noctalia msg panel-toggle clipboard",                               description = "Toggle Clipboard History"},             
-    [chord(KEYS.MODIFIER.ALT, KEYS.ALPHABET.N)] =                            {command = "noctalia msg panel-toggle control-center notifications",            description = "Toggle Notifications"},                         
-    [chord(KEYS.MODIFIER.ALT, KEYS.ALPHABET.B)] =                            {command = "noctalia msg bar-toggle",                                           description = "Toggle Bar"},     
-    [chord(KEYS.MODIFIER.SUPER, KEYS.MODIFIER.SHIFT, KEYS.ALPHABET.T)] =     {command = "noctalia msg theme-mode-toggle",                                    description = "Cycle Dark/Light Theme"},             
-    [chord(KEYS.MODIFIER.SUPER, KEYS.PUNCTUATION.COMMA)] =                   {command = "noctalia msg panel-toggle launcher /emo",                           description = "Toggle Emoji Selector"},         
-    [chord(KEYS.MODIFIER.ALT, KEYS.ALPHABET.C)] =                            {command = "noctalia msg panel-toggle control-center calendar",                 description = "Toggle Calendar"},             
-    [KEYS.XF86.AUDIORAISEVOLUME] =                                           {command = "noctalia msg volume-up",                                            description = "Increase Volume"},
-    [KEYS.XF86.AUDIOLOWERVOLUME] =                                           {command = "noctalia msg volume-up",                                            description = "Decrease Volume"},
-    [KEYS.XF86.AUDIOMUTE] =                                                  {command = "noctalia msg volume-mute",                                          description = "Toggle Mute"},
-    [chord(KEYS.MODIFIER.ALT, KEYS.SPECIAL.ESCAPE)] =                        {command = "noctalia msg panel-toggle control-center system",                   description = "Toggle Resource Monitor"},
-    [chord(KEYS.MODIFIER.CTRL, KEYS.MODIFIER.ALT, KEYS.NAVIGATION.DELETE)] = {command = "noctalia msg panel-toggle session",                                 description = "Toggle Session Menu"},
-    [chord(KEYS.MODIFIER.SUPER, KEYS.MODIFIER.ALT, KEYS.ALPHABET.L)] =       {command = "noctalia msg screen-lock",                                          description = "Lock Session"},
-    [chord(KEYS.MODIFIER.SUPER, KEYS.MODIFIER.SHIFT, KEYS.ALPHABET.W)] =     {command = "noctalia msg wallpaper-random",                                     description = "Change Wallpaper"}, 
+local ipc = {
+    [chord(KEYS.MODIFIER.SUPER, KEYS.SPECIAL.SPACE)] =                       {cmd = "noctalia msg panel-toggle launcher",                                desc = "Toggle Launcher"},
+    [chord(KEYS.MODIFIER.SUPER, KEYS.MODIFIER.ALT, KEYS.SPECIAL.SPACE)] =    {cmd = "noctalia msg panel-toggle control-center",                          desc = "Toogle Sidebar"},                 
+    [chord(KEYS.MODIFIER.SUPER, KEYS.PUNCTUATION.PERIOD)] =                  {cmd = "noctalia msg settings-toggle",                                      desc = "Toggle Settings"},             
+    [chord(KEYS.MODIFIER.ALT, KEYS.ALPHABET.V)] =                            {cmd = "noctalia msg panel-toggle clipboard",                               desc = "Toggle Clipboard History"},             
+    [chord(KEYS.MODIFIER.ALT, KEYS.ALPHABET.N)] =                            {cmd = "noctalia msg panel-toggle control-center notifications",            desc = "Toggle Notifications"},                         
+    [chord(KEYS.MODIFIER.ALT, KEYS.ALPHABET.B)] =                            {cmd = "noctalia msg bar-toggle",                                           desc = "Toggle Bar"},     
+    [chord(KEYS.MODIFIER.SUPER, KEYS.MODIFIER.SHIFT, KEYS.ALPHABET.T)] =     {cmd = "noctalia msg theme-mode-toggle",                                    desc = "Cycle Dark/Light Theme"},             
+    [chord(KEYS.MODIFIER.SUPER, KEYS.PUNCTUATION.COMMA)] =                   {cmd = "noctalia msg panel-toggle launcher /emo",                           desc = "Toggle Emoji Selector"},         
+    [chord(KEYS.MODIFIER.ALT, KEYS.ALPHABET.C)] =                            {cmd = "noctalia msg panel-toggle control-center calendar",                 desc = "Toggle Calendar"},             
+    [KEYS.XF86.AUDIORAISEVOLUME] =                                           {cmd = "noctalia msg volume-up",                                            desc = "Increase Volume"},
+    [KEYS.XF86.AUDIOLOWERVOLUME] =                                           {cmd = "noctalia msg volume-up",                                            desc = "Decrease Volume"},
+    [KEYS.XF86.AUDIOMUTE] =                                                  {cmd = "noctalia msg volume-mute",                                          desc = "Toggle Mute"},
+    [chord(KEYS.MODIFIER.ALT, KEYS.SPECIAL.ESCAPE)] =                        {cmd = "noctalia msg panel-toggle control-center system",                   desc = "Toggle Resource Monitor"},
+    [chord(KEYS.MODIFIER.CTRL, KEYS.MODIFIER.ALT, KEYS.NAVIGATION.DELETE)] = {cmd = "noctalia msg panel-toggle session",                                 desc = "Toggle Session Menu"},
+    [chord(KEYS.MODIFIER.SUPER, KEYS.MODIFIER.ALT, KEYS.ALPHABET.L)] =       {cmd = "noctalia msg screen-lock",                                          desc = "Lock Session"},
+    [chord(KEYS.MODIFIER.SUPER, KEYS.MODIFIER.SHIFT, KEYS.ALPHABET.W)] =     {cmd = "noctalia msg wallpaper-random",                                     desc = "Change Wallpaper"}, 
 }
 
+local utils = {
+    [KEYS.SPECIAL.PRINT] = {cmd = "flameshot gui", desc = "Screenshot Utility"}
+}
 
-for keybind,call in pairs(calls) do 
+for keybind,call in pairs(ipc) do 
     hl.bind(
         keybind,
-        hl.dsp.exec_cmd(call.command),
+        hl.dsp.exec_cmd(call.cmd),
         {
-            description = call.description
+            description = call.desc
+        }
+    )
+end
+
+for keybind,call in pairs(utils) do
+    hl.bind(
+        keybind,
+        hl.dsp.exec_cmd(call.cmd),
+        {
+            description = call.desc
         }
     )
 end
