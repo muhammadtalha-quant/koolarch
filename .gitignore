@@ -1,7 +1,7 @@
-fish/.config/fish/fish_variables
+fish/.config/fish/fish_variables*
 fish/.config/fish/functions
 fish/.config/fish/completions
-/noctalia/.local/state/noctalia/clipboard/entries/1779901357838-47.bin
-/noctalia/.local/state/noctalia/clipboard
-/noctalia/.local/state/noctalia/notification_history.json
-/noctalia/.local/state/noctalia/usage_counts.json
+/noctalia/.local/state/noctalia/
+!/noctalia/.local/state/noctalia/settings.toml
+kitty/.config/kitty/kitty.conf.bak
+kitty/.config/kitty/current-theme.conf
