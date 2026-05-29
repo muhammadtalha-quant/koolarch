@@ -70,6 +70,11 @@ local  KEYS = {
         ESCAPE = "ESCAPE",
         PRINT = "PRINT"
     },
+    LOCKS = {
+        CAPSLOCK = "Caps_Lock",
+        NUMLOCK = "Num_Lock",
+        SCROLLLOCK = "Scroll_Lock"
+    },
     NAVIGATION = {
         INSERT = "INSERT",
         DELETE = "DELETE",
@@ -114,16 +119,23 @@ local  KEYS = {
     }, 
 }
 
+-- 0. Hyprland Specific Binds
+
+hl.bind(
+    chord(KEYS.MODIFIER.SUPER, KEYS.MODIFIER.ALT, KEYS.ALPHABET.R),
+    hl.dsp.exec_cmd("hyprctl reload && noctalia msg config-reload")
+)
 
 -- 1. Apps
 
 local apps = {
-    [chord(KEYS.MODIFIER.SUPER, KEYS.SPECIAL.ENTER)] = {cmd = "kitty",               desc = "Open Kitty Terminal"},
+    [chord(KEYS.MODIFIER.SUPER, KEYS.SPECIAL.ENTER)] = {cmd = "kitty",                 desc = "Open Kitty Terminal"},
     [chord(KEYS.MODIFIER.SUPER, KEYS.ALPHABET.B)] =    {cmd = "google-chrome-stable",  desc = "Open Google Chrome Browser"},
     [chord(KEYS.MODIFIER.SUPER, KEYS.ALPHABET.C)] =    {cmd = "code",                  desc = "Open VSCode"},
     [chord(KEYS.MODIFIER.SUPER, KEYS.ALPHABET.E)] =    {cmd = "nautilus",              desc = "Open Nautilus File Manager"},
     [chord(KEYS.MODIFIER.SUPER, KEYS.ALPHABET.L)] =    {cmd = "localsend",             desc = "Open Localsend"},
     [chord(KEYS.MODIFIER.SUPER, KEYS.ALPHABET.G)] =    {cmd = "gimp",                  desc = "Open GIMP"},
+    [chord(KEYS.MODIFIER.SUPER, KEYS.ALPHABET.M)] =    {cmd = "kitty -e cava",         desc = "Open cava music simulator"}
 }
 
 
@@ -155,11 +167,17 @@ local ipc = {
     [chord(KEYS.MODIFIER.ALT, KEYS.SPECIAL.ESCAPE)] =                        {cmd = "noctalia msg panel-toggle control-center system",                   desc = "Toggle Resource Monitor"},
     [chord(KEYS.MODIFIER.CTRL, KEYS.MODIFIER.ALT, KEYS.NAVIGATION.DELETE)] = {cmd = "noctalia msg panel-toggle session",                                 desc = "Toggle Session Menu"},
     [chord(KEYS.MODIFIER.SUPER, KEYS.MODIFIER.ALT, KEYS.ALPHABET.L)] =       {cmd = "noctalia msg screen-lock",                                          desc = "Lock Session"},
-    [chord(KEYS.MODIFIER.SUPER, KEYS.MODIFIER.SHIFT, KEYS.ALPHABET.W)] =     {cmd = "noctalia msg wallpaper-random",                                     desc = "Change Wallpaper"}, 
+    [chord(KEYS.MODIFIER.ALT, KEYS.ALPHABET.W)] =                            {cmd = "noctalia msg wallpaper-random",                                     desc = "Random Wallpaper"}, 
 }
 
 local utils = {
-    [KEYS.SPECIAL.PRINT] = {cmd = "flameshot gui", desc = "Screenshot Utility"}
+    [chord(KEYS.MODIFIER.SUPER, KEYS.MODIFIER.SHIFT, KEYS.ALPHABET.S)] =     {cmd = "hyprcap shot region -z -c -n",                 desc = "Capture Region"},
+    [chord(KEYS.MODIFIER.SUPER, KEYS.MODIFIER.ALT, KEYS.ALPHABET.S)] =       {cmd = "hyprcap shot window:active -z -c -n",          desc = "Capture Focused Window"},
+    [chord(KEYS.MODIFIER.SUPER, KEYS.MODIFIER.CTRL, KEYS.ALPHABET.S)] =      {cmd = "hyprcap shot monitor:active -z -c -n",         desc = "Capture Full Screen"},
+    [chord(KEYS.MODIFIER.SUPER, KEYS.MODIFIER.SHIFT, KEYS.ALPHABET.S)] =     {cmd = "hyprcap rec region -c -n",                     desc = "Record Region"},
+    [chord(KEYS.MODIFIER.SUPER, KEYS.MODIFIER.ALT, KEYS.ALPHABET.S)] =       {cmd = "hyprcap rec window:active -c -n",              desc = "Record Focused Window"},
+    [chord(KEYS.MODIFIER.SUPER, KEYS.MODIFIER.CTRL, KEYS.ALPHABET.S)] =      {cmd = "hyprcap rec monitor:active -c -n",             desc = "Record Full Screen"},
+    [KEYS.LOCKS.SCROLLLOCK] =                                                {cmd = "hyprpicker -a -f hex",                         desc = "Pick Color"},
 }
 
 for keybind,call in pairs(ipc) do 
@@ -172,12 +190,12 @@ for keybind,call in pairs(ipc) do
     )
 end
 
-for keybind,call in pairs(utils) do
+for keybind,util in pairs(utils) do
     hl.bind(
         keybind,
-        hl.dsp.exec_cmd(call.cmd),
+        hl.dsp.exec_cmd(util.cmd),
         {
-            description = call.desc
+            description = util.desc
         }
     )
 end
