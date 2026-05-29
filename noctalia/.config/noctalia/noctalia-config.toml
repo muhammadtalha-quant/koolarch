@@ -1,0 +1,121 @@
+[bar]
+  order = ["top-bar", "music-bar"]
+  [bar.music-bar]
+    background_opacity = 0.5
+    capsule = true
+    center = ["audio_visualizer", "media", "audio_visualizer"]
+    enabled = false
+    end = ["network", "bluetooth", "volume", "brightness", "battery"]
+    font_weight = 700
+    margin_edge = 8.0
+    margin_ends = 19.0
+    padding = 15
+    start = ["workspaces", "active_window"]
+    thickness = 39
+    widget_spacing = 7
+
+  [bar.top-bar]
+    background_opacity = 0.5
+    capsule = true
+    center = ["notifications", "clock"]
+    end = ["network", "bluetooth", "volume", "brightness", "battery"]
+    enabled = true
+    font_weight = 700
+    margin_edge = 8.0
+    margin_ends = 19.0
+    padding = 15
+    start = ["workspaces", "active_window"]
+    thickness = 39
+    widget_spacing = 7
+
+[control_center]
+  sidebar = "full"
+
+[desktop_widgets]
+  enabled = false
+  schema_version = 1
+  widget_order = []
+  [desktop_widgets.grid]
+    cell_size = 16
+    major_interval = 4
+    visible = true
+  [desktop_widgets.widget]
+
+[keybinds]
+  cancel = ["Escape"]
+  validate = ["Return", "KP_Enter"]
+
+[shell]
+  avatar_path = "/home/muhammadtalha/.face/gibli.png"
+  clipboard_history_max_entries = 20.0
+  corner_radius_scale = 1.3500000201165676
+  font_family = "JetBrainsMono Nerd Font Mono"
+  polkit_agent = true
+  telemetry_enabled = true
+  [shell.animation]
+    speed = 0.6500000096857548
+  [shell.panel]
+    clipboard_placement = "attached"
+    launcher_categories = false
+    launcher_placement = "attached"
+    transparency_mode = "glass"
+  [shell.session]
+
+    [[shell.session.actions]]
+      action = "logout"
+      enabled = true
+      shortcut = "2"
+      variant = "default"
+
+    [[shell.session.actions]]
+      action = "suspend"
+      enabled = true
+      shortcut = "3"
+      variant = "default"
+
+    [[shell.session.actions]]
+      action = "reboot"
+      enabled = true
+      shortcut = "4"
+      variant = "default"
+
+    [[shell.session.actions]]
+      action = "shutdown"
+      enabled = true
+      shortcut = "5"
+      variant = "destructive"
+
+[theme]
+  builtin = "Gruvbox"
+  source = "wallpaper"
+  wallpaper_scheme = "vibrant"
+  [theme.templates]
+    builtin_ids = ["cava", "gtk3", "gtk4", "hyprland", "kcolorscheme", "kitty", "qt"]
+    enable_community_templates = false
+
+[wallpaper]
+  directory = "/home/muhammadtalha/Pictures"
+  fill_mode = "stretch"
+
+[weather]
+  address = "Mardan, Pakistan"
+
+[widget]
+  [widget.active_window]
+    title_scroll = "on_hover"
+  [widget.audio_visualizer]
+    capsule = true
+    show_when_idle = false
+  [widget.clock]
+    format = "{:%-I:%M %p}"
+  [widget.control-center]
+    capsule = true
+    capsule_opacity = 1
+    capsule_radius = 9.0
+  [widget.date]
+    format = "{:%b %d, %Y}"
+  [widget.gap]
+    length = 22.0
+    type = "spacer"
+  [widget.media]
+    capsule = true
