@@ -122,7 +122,7 @@ local  KEYS = {
 -- 0. Hyprland Specific Binds
 
 hl.bind(
-    chord(KEYS.MODIFIER.SUPER, KEYS.MODIFIER.ALT, KEYS.ALPHABET.R),
+    chord(KEYS.MODIFIER.CTRL, KEYS.MODIFIER.SUPER, KEYS.MODIFIER.ALT, KEYS.ALPHABET.R),
     hl.dsp.exec_cmd("hyprctl reload && noctalia msg config-reload")
 )
 
@@ -132,7 +132,7 @@ local apps = {
     [chord(KEYS.MODIFIER.SUPER, KEYS.SPECIAL.ENTER)] = {cmd = "kitty",                 desc = "Open Kitty Terminal"},
     [chord(KEYS.MODIFIER.SUPER, KEYS.ALPHABET.B)] =    {cmd = "google-chrome-stable",  desc = "Open Google Chrome Browser"},
     [chord(KEYS.MODIFIER.SUPER, KEYS.ALPHABET.C)] =    {cmd = "code",                  desc = "Open VSCode"},
-    [chord(KEYS.MODIFIER.SUPER, KEYS.ALPHABET.E)] =    {cmd = "kitty -e yazi",         desc = "Open Yazi File Manager"},
+    [chord(KEYS.MODIFIER.SUPER, KEYS.ALPHABET.E)] =    {cmd = "dolphin",         desc = "Open Yazi File Manager"},
     [chord(KEYS.MODIFIER.SUPER, KEYS.ALPHABET.L)] =    {cmd = "kdeconnect-app",            desc = "Open KDEConnect"},
     [chord(KEYS.MODIFIER.SUPER, KEYS.ALPHABET.G)] =    {cmd = "gimp",                  desc = "Open GIMP"},
     [chord(KEYS.MODIFIER.SUPER, KEYS.ALPHABET.M)] =    {cmd = "kitty -e cava",         desc = "Open cava music simulator"}
