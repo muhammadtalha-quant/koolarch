@@ -32,4 +32,4 @@ Following steps should be followed to install these configs. Unlike other config
 - Run `chsh -s $(which fish)` to change shell from bash to fish.
 - Run `git clone https://github.com/muhammadtalha-quant/dotfiles.git` to clone the dotfile repository again.
 - Change directory to the freshly cloned repo with `cd dotfiles`
-- Run `./bootstrap.fish` and then sit and provide password when prompt
+- Run `./bootstrap.fish` and then sit and provide password when prompted.
