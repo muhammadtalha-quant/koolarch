@@ -17,8 +17,8 @@ Following steps should be followed to install these configs. Unlike other config
 - Run `jq '.hostname = "host-name-of-your-choice"' config.json > config.json` to change your hostname.
 - Run `lsblk` and find your storage device node, then run `jq '.disk_config.device_modifications.[0].device = "/dev/<target-device>"' config.json` to point to the correct storage device for installation
 - Run `jq '.encryption_password = "disk-encryption-password-of-your-choice"' creds.json > creds.json` to change disk encryption password.
-- Run `jq '."!root-password" = "root-password-of-your-choice" creds.json > creds.json` to change root user password.
-- Run `jq '.users.[0]."!password" = "user-password-of-your-choice' creds.json > creds.json` to change your user password. This password will be used in logging into system.
+- Run `jq '."!root-password" = "root-password-of-your-choice"' creds.json > creds.json` to change root user password.
+- Run `jq '.users.[0]."!password" = "user-password-of-your-choice"' creds.json > creds.json` to change your user password. This password will be used in logging into system.
 - Run `jq '.users.[0].username = "username-of-your-choice"' creds.json > creds.json` to change your username.
 
 ### Step 3
