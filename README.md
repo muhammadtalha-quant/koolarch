@@ -34,3 +34,4 @@ Following steps should be followed to install these configs. Unlike other config
 - Run `git clone https://github.com/muhammadtalha-quant/dotfiles.git` to clone the dotfile repository again.
 - Change directory to the freshly cloned repo with `cd dotfiles`
 - Run `./bootstrap.fish` and then sit and provide password when prompted.
+- After the process is complete, reboot your system by running `sudo systemctl reboot` to see the final changes.
